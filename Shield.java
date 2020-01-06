@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Shield {
 
@@ -13,7 +14,9 @@ public class Shield {
         names.add("Jemma Simmons");
 
         // TODO 1 : map names to agents list
-        List<Agent> agents = new ArrayList<>();
+        List<Agent> agents = names.stream()
+                        .map(n -> new Agent(n.split(" ")[0], n.split(" ")[1]))
+                        .collect(Collectors.toList());
 
         showAgents(agents);
     }
